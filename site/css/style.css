@@ -1,0 +1,54 @@
+:root { --ink:#1a1a1a; --quiet:#555; --line:#c9c9c9; --bg:#fff; --panel:#f6f6f4; --accent:#8a4700; --blue:#2a78d6; --amber:#ffb000; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin:0; font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color:var(--ink); background:var(--bg); }
+a { color:#1a5fb4; }
+.skip { position:absolute; left:-999px; }
+.skip:focus { left:8px; top:8px; background:#fff; padding:8px; z-index:9; }
+nav.top { border-bottom:1px solid var(--line); background:var(--panel); }
+nav.top ul { list-style:none; margin:0 auto; padding:0 12px; max-width:1180px; display:flex; flex-wrap:wrap; gap:2px; }
+nav.top a { display:inline-block; padding:12px 10px; min-height:44px; color:var(--ink); text-decoration:none; }
+nav.top a:hover { background:#eaeae6; }
+nav.top a[aria-current="page"] { font-weight:700; border-bottom:3px solid var(--blue); }
+header.page { max-width:1180px; margin:0 auto; padding:14px 20px 6px; }
+h1 { font-size:22px; line-height:1.25; margin:0 0 6px; }
+h2 { font-size:17px; margin:0 0 8px; }
+.sub { color:var(--quiet); margin:0 0 8px; max-width:70ch; }
+main { max-width:1180px; margin:0 auto; padding:0 20px 28px; }
+main.grid { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr); gap:16px; }
+@media (max-width: 860px) { main.grid { grid-template-columns:minmax(0,1fr); } }
+.card { border:1px solid var(--line); border-radius:8px; padding:12px 14px; background:var(--panel); margin-bottom:12px; }
+.card h2 { font-size:15px; }
+button, .btn { font:inherit; min-height:44px; min-width:44px; padding:6px 14px; border:1px solid #777; border-radius:6px; background:#fff; color:var(--ink); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+button:hover:not(:disabled) { background:#eee; }
+button:disabled { opacity:.45; cursor:default; }
+button.on, button[aria-pressed="true"] { background:#ffe8c2; border-color:var(--accent); }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline:3px solid var(--blue); outline-offset:2px; }
+.row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:8px 0; }
+select, input[type=number] { font:inherit; min-height:44px; padding:4px 8px; }
+input[type=number] { width:7em; }
+input[type=range] { width:100%; min-height:44px; }
+.sugg { display:flex; gap:10px; align-items:flex-start; margin:8px 0; }
+.sugg .n { min-width:44px; padding:6px; background:var(--amber); border-color:#000; font-weight:700; }
+.sugg small { color:var(--quiet); display:block; }
+table { border-collapse:collapse; width:100%; font-size:14px; }
+th, td { text-align:left; padding:4px 8px 4px 0; border-bottom:1px solid #e4e4e0; white-space:nowrap; }
+.scroll { overflow-x:auto; }
+#logbox { max-height:200px; overflow:auto; }
+.note { color:var(--quiet); font-size:14px; }
+.big { font-size:19px; font-weight:600; }
+#msg { min-height:22px; color:var(--accent); font-size:14.5px; }
+.label-sim { display:inline-block; padding:4px 10px; border:1px solid var(--blue); border-radius:6px; background:#eaf2fc; font-weight:600; }
+.narr { min-height:3.2em; font-size:17px; }
+.endcard { border:2px solid var(--blue); background:#f2f7fd; }
+.fail { border:2px solid #b00020; background:#fdecee; color:#7a0016; font-weight:700; padding:8px 12px; border-radius:6px; }
+.hero img { width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff; }
+.legend span { display:inline-flex; align-items:center; gap:6px; margin-right:14px; font-size:14px; }
+.legend i { display:inline-block; width:22px; height:0; border-top:3px solid; }
+svg text { font-family:system-ui, sans-serif; }
+footer { max-width:1180px; margin:0 auto; padding:12px 20px 30px; color:var(--quiet); font-size:14px; border-top:1px solid var(--line); }
+code, pre { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:13.5px; }
+pre { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:10px 12px; overflow-x:auto; }
+@media (max-width: 520px) { h1 { font-size:20px; } main, header.page { padding-left:14px; padding-right:14px; } }
+input[type=range] { flex:1 1 180px; width:auto; }
+select { max-width:100%; min-width:0; }

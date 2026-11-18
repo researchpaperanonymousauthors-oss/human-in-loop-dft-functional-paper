@@ -1,0 +1,54 @@
+<header class="page">
+  <h1>Reproduce: methods, versions, commands, licences</h1>
+  <p class="sub">Everything on these pages comes from the files listed here. Replay mode: the Skala energies were computed once, with the script below, and are stored.</p>
+</header>
+<main id="main">
+  <section class="card" aria-labelledby="r-meth">
+    <h2 id="r-meth">Methods in short</h2>
+    <ul>
+      <li><b>System.</b> One proton around a nitrite (NO2) frame, on a polar map: angle 0 to 180 degrees, distance 1.0 to 2.4 angstrom; points whose cheap energy is above 60 kcal/mol are skipped.</li>
+      <li><b>Points.</b> A coarse grid (10 degrees, 0.10 angstrom, 214 points) and a fine grid (5 degrees, 0.05 angstrom) used only where the cheap map is below 60 kcal/mol (451 more points): 665 Skala-1.1 / def2-SVP energies (665 converged; PBE comparison 663). Median 51 s per point on a CPU.</li>
+      <li><b>Cheap map.</b> GFN2-xTB (tblite) on every grid node.</li>
+      <li><b>Estimate.</b> cheap map plus a Gaussian-process fit of (Skala minus xTB) at the revealed points (length 0.3, signal variance 25, noise variance 2, in unit-square coordinates).</li>
+      <li><b>Barrier.</b> the lowest pass between two named wells (a path that minimises its highest point), minus the energy of the first well. Wells are hand-set search windows.</li>
+      <li><b>Simulated clickers.</b> Five fixed rules, 40 seeded first clicks each (spaced evenly through the list of stored points), 30 clicks, run through the page's own code (<code>figures/make_simulation.js</code>).</li>
+    </ul>
+  </section>
+  <section class="card" aria-labelledby="r-ver">
+    <h2 id="r-ver">Versions</h2>
+    <p>Skala 2026.9, PySCF 2.14.0, matplotlib 3.11.2, Plotly.js 4.1.1 (MIT, bundled as <code>plotly.min.js</code>), Node.js and Playwright for the page checks. Other package versions are in <code>requirements.txt</code>.</p>
+  </section>
+  <section class="card" aria-labelledby="r-cmd">
+    <h2 id="r-cmd">Commands (from the folder that contains <code>index.html</code>)</h2>
+<pre>bash check.sh                          # all checks below in one go
+node tools/build_site_data.js --check  # site data and schematic are fresh
+node tools/build_pages.js --check      # the six pages are fresh
+python3 figures/check_numbers.py       # every number in the paper: 0 mismatches
+node tests/run_tests.js                # page tests (needs Playwright)</pre>
+  </section>
+  <section class="card" aria-labelledby="r-files">
+    <h2 id="r-files">Files</h2>
+    <ul>
+      <li><a href="../README.md">README.md</a>: what this is and how to publish it</li>
+      <li><a href="../compute/b3_points.py">compute/b3_points.py</a>: point plan and the Skala, PBE and xTB run</li>
+      <li><a href="../data/hono_def2-svp_points.jsonl">data/hono_def2-svp_points.jsonl</a>: the 665 stored records</li>
+      <li><a href="data/hono.json">site/data/hono.json</a>: the data the pages read (via <code>data/hono.js</code>)</li>
+      <li><a href="../figures/check_numbers.py">figures/check_numbers.py</a>: the number check</li>
+      <li><a href="../tools/build_site_data.js">tools/build_site_data.js</a>: builds the data scripts</li>
+    </ul>
+  </section>
+  <section class="card" aria-labelledby="r-lic">
+    <h2 id="r-lic">Licences and citation</h2>
+    <p>Code: MIT (<a href="../LICENSE">LICENSE</a>, with the Plotly notice). Data and figures: CC BY 4.0 (<a href="../LICENSE-DATA">LICENSE-DATA</a>). Cite with <a href="../CITATION.cff">CITATION.cff</a>.</p>
+  </section>
+  <section class="card" aria-labelledby="r-lim">
+    <h2 id="r-lim">Limits, stated plainly</h2>
+    <ul>
+      <li>Replay mode only: no energy is computed live. The page design does not depend on that.</li>
+      <li>The clickers on the demo and comparison pages are simulated by fixed rules. No person has been tested.</li>
+      <li>One small system, one functional and one basis set (Skala-1.1 / def2-SVP). There is no higher-level reference calculation, so a different order of wells in the cheap map is "different from Skala", not "wrong".</li>
+      <li>The map shows where a proton sits. Its barriers are not isomerisation barriers of nitrous acid.</li>
+      <li>The surrogate settings were tuned on the same stored points, so the errors are optimistic. The well windows are hand-set.</li>
+    </ul>
+  </section>
+</main>

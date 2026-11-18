@@ -1,0 +1,53 @@
+<header class="page">
+  <h1 id="title">Zoom-box energy map explorer</h1>
+  <p class="sub"><b>Replay mode.</b> The Skala energies were computed in advance and are stored. Each click reveals one of them. The cheap xTB map is corrected as you reveal points, and the barrier estimate updates after every point.</p>
+</header>
+<main id="main" class="grid">
+  <section aria-label="Energy map">
+    <div class="card" style="padding:6px 6px 0"><div id="map" style="height:470px" role="img" aria-label="Energy map. Drag a box on it to reveal the stored Skala energies inside the box."></div></div>
+    <div class="card">
+      <h2>How to read the map</h2>
+      <div class="note">Horizontal: the direction of the moving proton as seen from the centre of the frame, 0 to 180 degrees (the other half is the mirror image). Vertical: its distance from the centre in angstrom. Colour: energy above the lowest point, in kcal/mol; dark is stable. White circles are points you revealed; orange squares are suggestions. This is a map of where the proton sits, not a reaction path, so the barrier is the lowest pass between two wells on this map.</div>
+    </div>
+    <div class="card">
+      <h2>No mouse? Type a position</h2>
+      <div class="row"><label for="kb-angle">Angle (0 to 180)</label><input id="kb-angle" type="number" min="0" max="180" step="5" value="90">
+        <label for="kb-dist">Distance (angstrom)</label><input id="kb-dist" type="number" min="1.0" max="2.4" step="0.05" value="1.8"></div>
+      <div class="row"><button id="kb-go" type="button">Reveal nearest stored point</button></div>
+    </div>
+  </section>
+  <aside>
+    <div class="card">
+      <h2>System</h2>
+      <div class="note" id="sysinfo"></div>
+      <p class="note" style="margin:6px 0">Zoom-box mode: drag a box on the map. Every stored point inside it that you have not revealed is revealed, up to 12 at a time, one Skala energy each. Prefer single clicks, or on a phone? <a href="explore-click.html">Use the click page</a>.</p>
+      <div id="msg" role="status" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <h2>Suggested next points</h2>
+      <div id="sugg"></div>
+      <div class="note">Suggestions come from simple rules: where the estimated path is highest, wells not yet measured, where the estimate is least certain, and the lowest estimate left. You can ignore them.</div>
+    </div>
+    <div class="card">
+      <h2>Estimate so far</h2>
+      <div>Skala energies revealed: <span class="big" id="count">0</span> of <span id="budget"></span></div>
+      <div class="row"><label for="from">From</label><select id="from"></select><label for="to">to</label><select id="to"></select></div>
+      <div>Barrier (lowest pass between them, measured from the first well): <span class="big" id="barrier">-</span> <span class="note" id="barnote"></span></div>
+      <div id="wells" class="note"></div>
+      <div class="row">
+        <button id="reveal" type="button" aria-pressed="false">Show every stored Skala point</button>
+        <button id="reset" type="button">Start again</button>
+        <button id="save" type="button">Download session log</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Where the proton is (hover the map)</h2>
+      <svg id="mol" viewBox="-3 -3 6 6" width="100%" height="190" role="img" aria-label="molecular frame with the moving proton"></svg>
+      <div id="hov" class="note"></div>
+    </div>
+    <div class="card">
+      <h2>Session log</h2>
+      <div id="logbox" class="scroll"><table id="log"><thead><tr><th>#</th><th>s</th><th>how</th><th>angle</th><th>dist.</th><th>E kcal/mol</th><th>barrier</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </aside>
+</main>

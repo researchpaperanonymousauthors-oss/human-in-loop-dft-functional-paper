@@ -1,0 +1,48 @@
+<header class="page">
+  <h1>Auto-play demo: a simulated clicker</h1>
+  <p class="sub"><span class="label-sim">Simulated clicker: a fixed rule, not a person.</span> It replays 20 clicks on the stored Skala energies. The page recomputes the map and the barrier estimate after every click with the same code as the explorer pages. Replay mode: the Skala energies were computed in advance.</p>
+</header>
+<main id="main" class="grid">
+  <section aria-label="Map and narration">
+    <div class="card">
+      <div class="row">
+        <button id="play" type="button">Pause</button>
+        <button id="back" type="button">Back</button>
+        <button id="fwd" type="button">Forward</button>
+        <button id="restart" type="button">Restart</button>
+        <label for="speed">Speed</label>
+        <select id="speed"><option value="0.5">0.5</option><option value="1" selected>1</option><option value="2">2</option><option value="4">4</option></select>
+      </div>
+      <div class="row">
+        <label for="scenario">Clicker</label>
+        <select id="scenario"><option value="wells">Wells first, then the pass (rule)</option><option value="pass">Pass guess only (rule)</option><option value="random">Random stored points</option></select>
+        <label for="start">Start</label>
+        <select id="start"></select>
+      </div>
+      <p class="note" style="margin:4px 0">Keys: Space plays or pauses, Left and Right step, Home restarts. One click takes 1.5 s at speed 1. Start 1 to 40 is one of 40 seeded first clicks, spaced evenly through the stored points.</p>
+      <div id="check" class="fail" role="alert" hidden>Check failed: the live estimate differs from the recorded one, or a rule-based click matched no live suggestion.</div>
+      <p id="narr" class="narr" role="status" aria-live="polite"></p>
+    </div>
+    <div class="card" style="padding:6px 6px 0"><div id="map" style="height:440px" role="img" aria-label="Energy map with the revealed points numbered; the newest is ringed in blue."></div></div>
+    <div id="end" class="card endcard" hidden></div>
+  </section>
+  <aside>
+    <div class="card" aria-label="Live estimate">
+      <h2>Live estimate</h2>
+      <div>Click <span class="big" id="k">0</span> of <span id="n"></span></div>
+      <div>Pass estimate: <span class="big" id="est">-</span> kcal/mol</div>
+      <div>With all <span id="nall"></span> points: <span id="ref"></span> kcal/mol</div>
+      <div>Difference: <span class="big" id="diff">-</span> kcal/mol</div>
+      <div class="note" id="order"></div>
+    </div>
+    <div class="card">
+      <h2>Estimate against click</h2>
+      <svg id="chart" viewBox="0 0 320 190" width="100%" role="img" aria-label="Pass estimate against number of clicks"></svg>
+      <div class="legend note"><span><i style="border-top-color:#2a78d6"></i> estimate</span><span><i style="border-top-style:dashed;border-top-color:#1a1a1a"></i> with all points</span></div>
+    </div>
+    <div class="card">
+      <h2>Revealed points</h2>
+      <div id="logbox" class="scroll"><table id="log"><thead><tr><th>#</th><th>angle</th><th>dist.</th><th>E kcal/mol</th><th>pass est.</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </aside>
+</main>

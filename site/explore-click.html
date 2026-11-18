@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Explore: click to reveal Skala energies</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-mode="click">
+<a class="skip" href="#main">Skip to the content</a>
+<nav class="top" aria-label="Main"><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="demo.html">Auto-play demo</a></li>
+<li><a href="explore-click.html" aria-current="page">Explore: click</a></li>
+<li><a href="explore-box.html">Explore: zoom box</a></li>
+<li><a href="compare.html">Compare strategies</a></li>
+<li><a href="reproduce.html">Reproduce</a></li>
+</ul></nav>
+<header class="page">
+  <h1 id="title">Click-to-reveal energy map explorer</h1>
+  <p class="sub"><b>Replay mode.</b> The Skala energies were computed in advance and are stored. Each click reveals one of them. The cheap xTB map is corrected as you reveal points, and the barrier estimate updates after every point.</p>
+</header>
+<main id="main" class="grid">
+  <section aria-label="Energy map">
+    <div class="card" style="padding:6px 6px 0"><div id="map" style="height:470px" role="img" aria-label="Energy map. Click it to reveal the stored Skala energy nearest to the click."></div></div>
+    <div class="card">
+      <h2>How to read the map</h2>
+      <div class="note">Horizontal: the direction of the moving proton as seen from the centre of the frame, 0 to 180 degrees (the other half is the mirror image). Vertical: its distance from the centre in angstrom. Colour: energy above the lowest point, in kcal/mol; dark is stable. White circles are points you revealed; orange squares are suggestions. This is a map of where the proton sits, not a reaction path, so the barrier is the lowest pass between two wells on this map.</div>
+    </div>
+    <div class="card">
+      <h2>No mouse? Type a position</h2>
+      <div class="row"><label for="kb-angle">Angle (0 to 180)</label><input id="kb-angle" type="number" min="0" max="180" step="5" value="90">
+        <label for="kb-dist">Distance (angstrom)</label><input id="kb-dist" type="number" min="1.0" max="2.4" step="0.05" value="1.8"></div>
+      <div class="row"><button id="kb-go" type="button">Reveal nearest stored point</button></div>
+    </div>
+  </section>
+  <aside>
+    <div class="card">
+      <h2>System</h2>
+      <div class="note" id="sysinfo"></div>
+      <p class="note" style="margin:6px 0">Click mode: click the map to reveal the stored Skala energy nearest to your click. Prefer to drag a box? <a href="explore-box.html">Use the zoom-box page</a>.</p>
+      <div id="msg" role="status" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <h2>Suggested next points</h2>
+      <div id="sugg"></div>
+      <div class="note">Suggestions come from simple rules: where the estimated path is highest, wells not yet measured, where the estimate is least certain, and the lowest estimate left. You can ignore them.</div>
+    </div>
+    <div class="card">
+      <h2>Estimate so far</h2>
+      <div>Skala energies revealed: <span class="big" id="count">0</span> of <span id="budget"></span></div>
+      <div class="row"><label for="from">From</label><select id="from"></select><label for="to">to</label><select id="to"></select></div>
+      <div>Barrier (lowest pass between them, measured from the first well): <span class="big" id="barrier">-</span> <span class="note" id="barnote"></span></div>
+      <div id="wells" class="note"></div>
+      <div class="row">
+        <button id="reveal" type="button" aria-pressed="false">Show every stored Skala point</button>
+        <button id="reset" type="button">Start again</button>
+        <button id="save" type="button">Download session log</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Where the proton is (hover the map)</h2>
+      <svg id="mol" viewBox="-3 -3 6 6" width="100%" height="190" role="img" aria-label="molecular frame with the moving proton"></svg>
+      <div id="hov" class="note"></div>
+    </div>
+    <div class="card">
+      <h2>Session log</h2>
+      <div id="logbox" class="scroll"><table id="log"><thead><tr><th>#</th><th>s</th><th>how</th><th>angle</th><th>dist.</th><th>E kcal/mol</th><th>barrier</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </aside>
+</main>
+
+<footer>Replay mode: every Skala-1.1 / def2-SVP energy shown here was computed in advance and stored; no quantum-chemistry calculation runs in your browser. The clickers on the demo and comparison pages are simulated by fixed rules, not people. Code: MIT. Data and figures: CC BY 4.0 (see the Reproduce page).</footer>
+<script src="plotly.min.js" defer></script>
+<script src="data/hono.js" defer></script>
+<script src="js/engine.js" defer></script>
+<script src="js/mapview.js" defer></script>
+<script src="js/explorer.js" defer></script>
+</body>
+</html>

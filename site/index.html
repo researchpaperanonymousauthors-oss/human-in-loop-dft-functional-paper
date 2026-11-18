@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Skala map explorer: human-steered sampling of energy maps</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the content</a>
+<nav class="top" aria-label="Main"><ul>
+<li><a href="index.html" aria-current="page">Home</a></li>
+<li><a href="demo.html">Auto-play demo</a></li>
+<li><a href="explore-click.html">Explore: click</a></li>
+<li><a href="explore-box.html">Explore: zoom box</a></li>
+<li><a href="compare.html">Compare strategies</a></li>
+<li><a href="reproduce.html">Reproduce</a></li>
+</ul></nav>
+<header class="page">
+  <h1>An interactive web explorer for human-steered sampling of Skala energy maps</h1>
+  <p class="sub">A potential energy map costs one expensive calculation per point. This explorer lets a person decide which points to compute next, one click at a time, and shows how the estimate of a barrier changes after every click.</p>
+</header>
+<main id="main">
+  <section class="card" aria-labelledby="h-what">
+    <h2 id="h-what">The idea in plain words</h2>
+    <ol>
+      <li><b>Click.</b> You see a cheap map of the energy (GFN2-xTB) and click a place you want to know better.</li>
+      <li><b>Reveal.</b> The page shows one Skala energy for that place.</li>
+      <li><b>Update.</b> The page corrects the cheap map near the revealed points and re-estimates the barrier, the lowest pass between two named wells.</li>
+      <li><b>Suggest.</b> It offers up to four next points from simple rules. You may ignore them and click elsewhere.</li>
+      <li><b>Log.</b> Every choice is written to a session log that you can download.</li>
+    </ol>
+    <p><b>Replay mode.</b> All 665 Skala-1.1 / def2-SVP energies were computed in advance and are stored in this site, so a click reveals one stored value. No quantum-chemistry calculation runs in your browser, and nobody waits for one. The same page design would also work with live calculations.</p>
+    <p>The example is one proton moving around a nitrite frame (nitrous acid): the map shows where the proton sits, not a reaction path.</p>
+  </section>
+  <section class="card hero" aria-labelledby="h-fig">
+    <h2 id="h-fig">One click, step by step</h2>
+    <img src="img/fig_schematic.svg" alt="Schematic of the explorer: an energy map you click; a reveal step that shows one stored Skala energy; an update step that corrects the map and estimates the barrier; a menu of up to four suggested points; and a session log. Arrows run in a loop from click to log." width="1000" height="536">
+  </section>
+  <section class="card" aria-labelledby="h-go">
+    <h2 id="h-go">Try it</h2>
+    <div class="row">
+      <a class="btn" href="demo.html">Watch the auto-play demo</a>
+      <a class="btn" href="explore-click.html">Explore: click the map</a>
+      <a class="btn" href="explore-box.html">Explore: drag a zoom box</a>
+      <a class="btn" href="compare.html">Compare five click rules</a>
+    </div>
+    <p class="note">The demo and comparison pages use <b>simulated clickers</b>, fixed rules that stand in for a person. No person has been tested yet. The two explorer pages are for you. The click page works best on a phone; the zoom-box page needs a mouse or a trackpad.</p>
+  </section>
+  <section class="card" aria-labelledby="h-open">
+    <h2 id="h-open">Open and reproducible</h2>
+    <p>The code, the stored energies, the figures and the numbers in the paper are in this package. See the <a href="reproduce.html">Reproduce</a> page for versions, commands and licences.</p>
+  </section>
+</main>
+
+<footer>Replay mode: every Skala-1.1 / def2-SVP energy shown here was computed in advance and stored; no quantum-chemistry calculation runs in your browser. The clickers on the demo and comparison pages are simulated by fixed rules, not people. Code: MIT. Data and figures: CC BY 4.0 (see the Reproduce page).</footer>
+
+</body>
+</html>

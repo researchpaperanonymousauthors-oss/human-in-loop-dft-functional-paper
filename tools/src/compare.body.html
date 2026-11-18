@@ -1,0 +1,24 @@
+<header class="page">
+  <h1>Compare click strategies</h1>
+  <p class="sub"><span class="label-sim">Simulated clickers: fixed rules, not people.</span> Five rules each clicked 30 times on the stored Skala energies, from 40 seeded first clicks. Every number on this page is recomputed in your browser from the recorded clicks. Replay mode: the energies were computed in advance.</p>
+</header>
+<main id="main">
+  <section class="card" aria-labelledby="t1h">
+    <h2 id="t1h">Table 2. Error of the pass estimate and well order, after 5, 10 and 20 clicks</h2>
+    <p class="note">Median over 40 starts of the absolute difference between the estimated and the all-points cis to trans pass (kcal/mol), and the number of the 40 starts in which the well order is cis, then trans, then nitro, as with all points. The cheap xTB map alone is <span id="cheap"></span> kcal/mol away, and has the opposite order of wells to Skala.</p>
+    <div class="scroll"><table id="t1"></table></div>
+  </section>
+  <section class="card" aria-labelledby="chh">
+    <h2 id="chh">Over the clicks 1 to 30</h2>
+    <div class="row" style="align-items:flex-start;gap:16px">
+      <div style="flex:1 1 320px;min-width:0"><svg id="ch-err" viewBox="0 0 400 270" width="100%" role="img" aria-label="Median error of the pass estimate against number of clicks, five strategies"></svg></div>
+      <div style="flex:1 1 320px;min-width:0"><svg id="ch-ord" viewBox="0 0 400 270" width="100%" role="img" aria-label="Starts with the right well order against number of clicks, five strategies"></svg></div>
+    </div>
+    <p class="note">Lines: wells first, then the pass (solid blue, circles); pass guess only (dashed red, squares); most uncertain only (dotted green, triangles); random (dash-dot grey, crosses); spread out (long-dash light grey, diamonds). The pass guess alone is the worst; wells first reaches the pass fastest but gets the well order right in only 31 of 40 starts.</p>
+  </section>
+  <section class="card" aria-labelledby="slh">
+    <h2 id="slh">Step through the clicks</h2>
+    <div class="row"><button id="cplay" type="button">Play</button><label for="cs">Click</label><input id="cs" type="range" min="1" max="30" value="10"><span class="big" id="cv">10</span></div>
+    <div class="scroll"><table id="tk"></table></div>
+  </section>
+</main>

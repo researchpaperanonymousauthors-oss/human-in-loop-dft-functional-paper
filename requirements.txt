@@ -1,0 +1,7 @@
+# Versions used for the stored energies and the figures.
+skala==2026.9
+pyscf==2.14.0
+matplotlib==3.11.2
+# GFN2-xTB map (needs the tblite Python package) and numpy: the authors must add the versions they used.
+tblite
+numpy

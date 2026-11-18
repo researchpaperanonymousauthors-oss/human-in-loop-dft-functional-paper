@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the paper and this repository."
+title: "Skala map explorer (replay mode): human-steered sampling of Skala energy maps"
+type: software
+authors:
+  - family-names: "TO-BE-CONFIRMED"
+    given-names: "AUTHOR"
+repository-code: "https://github.com/TO-BE-CONFIRMED/skala-map-explorer"
+url: "https://TO-BE-CONFIRMED.github.io/skala-map-explorer/"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-16"
+abstract: "Static web explorer with stored Skala-1.1 / def2-SVP energies of one proton around a nitrite frame, simulated-clicker demos, and the scripts that reproduce the paper's numbers."
+preferred-citation:
+  type: article
+  title: "An interactive web explorer for human-steered sampling of Skala energy maps"
+  journal: "Croatica Chemica Acta"
+  year: 2026
+  authors:
+    - family-names: "TO-BE-CONFIRMED"
+      given-names: "AUTHOR"
